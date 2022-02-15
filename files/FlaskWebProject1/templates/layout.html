@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - 数科腾云</title>
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/test.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/login.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="/static/scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ url_for('home') }}" class="navbar-brand" id="a-top"> <i class="fa fa-skyatlas"></i> 数科腾云</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a class="top-a" href="{{ url_for('home') }}">简述</a></li>
+                    <li><a class="top-a" href="{{ url_for('table') }}">数据表</a></li>
+                    <li><a class="top-a" href="{{ url_for('SQL') }}">SQL</a></li>
+                    <li><a class="top-a" href="{{ url_for('about') }}">关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="container body-content">
+        {% block content %}{% endblock %}
+        {% if indexFlag %}
+        <hr class="index-hr" />
+        <footer>
+            <p id="LoginIntro">{{ year }} - <i class="fa fa-skyatlas"></i> 数科腾云，数据管理平台</p>
+        </footer>
+        {% else %}
+        <hr class="hr" />
+        <footer>
+            <p class="query-subtitle">{{ year }} - <i class="fa fa-skyatlas"></i> 数科腾云，数据管理平台</p>
+        </footer>
+        {% endif %}
+    </div>
+    
+    
+
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

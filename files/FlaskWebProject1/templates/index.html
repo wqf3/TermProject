@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron" id="loginBox">
+    <h1 class="title" id="LoginTitle"><i class="fa fa-skyatlas"></i> 数科腾云</h1>
+    <p class="lead subtitle" id="LoginSub">“物有本末，事有终始，知所先后，则近道矣。”</p>
+    <p><a href="{{url_for('report')}}" class="btn index-btn-style1 btn-style1 btn-upper">有关网页 &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4 index-subtitle-box">
+        <h2 class="index-subtitle ">
+            <span><i class="fa fa-cloud-upload" id="index-sub-icon"></i></span><br />
+            <span class="small-sub">让数据</span><br />
+            <b class="big-sub">腾云驾雾</b><br />
+        </h2>
+        <p class="index-text">
+            数科腾云的数据分析服务高度依托于云端。在云端创建数据表，与同事、朋友共同分享自己的新发现。
+            利用经过交互式可视化的精确数据信息惊艳您的客户。在数据的云海中寻找潜在的机会。
+            一切都只需要通过浏览器即可访问，让您的数据在云端腾云驾雾。
+        </p>
+        <p><a class="btn index-btn-style1 btn-style1 btn-lower" href="{{url_for('SQL')}}">快速体验 &raquo;</a></p>
+    </div>
+    <div class="col-md-4 index-wordbox index-subtitle-box">
+        <h2 class="index-subtitle ">
+            <span><i class="fa fa-pie-chart" id="index-sub-icon"></i></span><br />
+            <span class="small-sub">所选即所得</span><br />
+            <b class="big-sub">可视化</b><br />
+        </h2>
+        <p class="index-text">
+            数科腾云支持数据快速可视化。选择您数据表中的特定行列，将其抽取并极速可视化。
+            依托Echart，腾云得以以超过20种不同方式可视化您的数据并反映在浏览器上。
+            您可以将图表部署到您的网站上，令您的业务发展之势葳蕤蓬勃。
+        </p>
+        <p><a class="btn index-btn-style1 btn-style1 btn-lower" href="{{url_for('table')}}">选择数据 &raquo;</a></p>
+    </div>
+    <div class="col-md-4 index-wordbox index-subtitle-box">
+        <h2 class="index-subtitle ">
+            <span><i class="fa fa-paper-plane" id="index-sub-icon"></i></span><br />
+            <span class="small-sub">数据快速</span><br />
+            <b class="big-sub">线上处理</b><br />
+        </h2>
+        <p class="index-text">
+            数科腾云支持在浏览器端对数据进行操作。输入SQL语句，从数据库中选择特定数据表。
+            无论何时何地，极速进行MySql操作，助力您的工作高效进行。
+        </p>
+        <p><a class="btn index-btn-style1 btn-style1 btn-lower" href="{{url_for('SQL')}}">SQL操作 &raquo;</a></p>
+    </div>
+</div>
+
+{% endblock %}

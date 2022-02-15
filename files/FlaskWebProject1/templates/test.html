@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>测试</h1>
+{% if formFlag %}
+<h1>调用数据库内容<small>&emsp;&emsp;请在这里输入SQL语句</small></h1>
+<form role="form" method="post" action="/test">
+    <label>Test</label>
+    {{ form.content(class_='test-textarea') }}
+    <br />
+    {{ form.csrf_token }}
+    {{ form.submit(class_="btn-style1") }}
+</form>
+{% endif %}
+<br />
+<br />
+
+{% if queryFlag %}
+
+<table class="tbl-style1">
+    {% for row in rows %}
+    <tr>
+        <td>
+            &emsp;{{loop.index}}&emsp;
+        </td>
+        {% for column in columns %}
+
+        <td>
+            <a class="a-block" href="{{url_for('tableQuery',table = row[column])}}">
+                &emsp;{{row[column]}}&emsp;
+            </a>
+        </td>
+
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+{% if dataFlag %}
+<button id="choice1Type" class="btn-style1">按行选择</button>
+{% endif %}
+<br />
+<br />
+
+<table id="dataTable1" class="tbl-style2">
+    {% for row in rows %}
+    <tr>
+        <td class="firstColumn">&emsp;&emsp;{{loop.index0}}&emsp;&emsp;</td>
+
+        {% for column in columns %}
+
+        <td>&emsp;&emsp;{{row[column]}}&emsp;&emsp;</td>
+
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<br />
+{% if dataFlag %}
+<button id="choice1Submit" class="btn-style1">提交</button>
+{% endif %}
+
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/scripts/Test.js"></script>
+
+{% endblock %}

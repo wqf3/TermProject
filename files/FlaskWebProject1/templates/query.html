@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="query-title">调用数据库内容<small class="query-subtitle">&emsp;&emsp;请在这里输入SQL语句</small></h1>
+
+<form role="form" method="post" action="/SQL">
+    {{ form.content(class_='test-textarea') }}
+    <br />
+    {{ form.csrf_token }}
+    {{ form.submit(class_="btn-style1") }}
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% if errorFlag %}
+
+<script>
+    $(window).load(function () {
+        alert("SQL代码有误，请重新输入！");
+    });
+</script>
+
+{% endif %}
+
+{% if emptyFlag %}
+
+<script>
+    $(window).load(function () {
+        alert("您查询的数据表是空的！");
+    });
+</script>
+
+{% endif %}
+
+{% endblock %}

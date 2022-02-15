@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆 - 数科腾云</title>
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/login.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="/static/scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="a-top"><i class="fa fa-skyatlas"></i> 数科腾云</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        <div class="jumbotron" id="loginBox">
+            <h1 class="title" id="LoginTitle"><i class="fa fa-skyatlas"></i> 数科腾云</h1>
+            <p class="lead subtitle" id="LoginSub">“物有本末，事有终始，知所先后，则近道矣。”</p>
+            <div class="inputbox">
+                <br />
+                <input class="input" type="text" name="username" id="usr"><br />
+                <p class="login-label">Username</p>
+            </div>
+            <div class="inputbox">
+                <br />
+                <input class="input" type="password" name="password" id="psw"><br />
+                <p class="login-label">Password</p>
+                <input type="checkbox" id="p">
+                <label for="p" class="check"></label>
+            </div>
+
+            <button id="loginSubmit" class="btn btn-style1">登录</button>
+
+        </div>
+
+        <hr class="index-hr" />
+        <footer>
+            <p id="LoginIntro">{{ year }} - 数科腾云，数据管理平台</p>
+        </footer>
+    </div>
+
+    <form id="login" method="post" action="/login">
+        <input type="hidden" name="username" value="" />
+        <input type="hidden" name="password" value="" />
+    </form>
+
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+
+    <script>
+        $("#loginSubmit").click(function () {
+            var loginForm = document.forms['login'];
+            loginForm.username.value = $("#usr").val();
+            loginForm.password.value = $("#psw").val();
+            loginForm.submit();
+        });
+        $("#p").click(function () {
+            var check = $("#p").prop("checked");
+            check ? $("#psw").attr("type", "text") : $("#psw").attr("type", "password");
+        })
+    </script>
+
+    {% if errorFlag %}
+    <script>
+        $(window).load(function () {
+            alert("用户名或密码错误，请重新输入！");
+        });
+    </script>
+    {% endif %}
+
+    {% if emptyFlag %}
+    <script>
+        $(window).load(function () {
+            alert("未输入用户名或密码，请输入！");
+        });
+    </script>
+    {% endif %}
+
+    {% if notLoginFlag %}
+    <script>
+        $(window).load(function () {
+            alert("您试图玩阴的是吧？直接来  吧！");
+        });
+    </script>
+    {% endif %}
+
+</body>
+</html>

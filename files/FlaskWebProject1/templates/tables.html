@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="query-title">数据表&emsp;<small class="query-subtitle">点击展开数据</small></h1>
+<table class="tbl-style1">
+    {% for row in rows %}
+    <tr>
+        <td>
+            &emsp;{{loop.index}}&emsp;
+        </td>
+        {% for column in columns %}
+
+        <td>
+            <a class="a-block" onclick="forbid()" href="{{url_for('tableQuery',table = row[column])}}">
+                &emsp;{{row[column]}}&emsp;
+            </a>
+        </td>
+
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+    function forbid() {
+        $(".a-block").attr("disabled", true).css("pointer-events", "none");
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!--
+<button id="choice1Type" class="btn-style1">按行选择</button>
+-->
+
+<br />
+
+<table id="dataTable1" class="tbl-style2">
+    <tr>
+        <td></td>
+        {% for item in head %}
+
+        <td>&emsp;&emsp;{{item}}&emsp;&emsp;</td>
+
+        {% endfor %}
+    </tr>
+    {% for row in rows %}
+    <tr>
+        <td class="firstColumn">&emsp;&emsp;{{loop.index0}}&emsp;&emsp;</td>
+
+        {% for column in columns %}
+
+        <td>&emsp;&emsp;{{row[column]}}&emsp;&emsp;</td>
+
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<button id="choice1Submit" class="btn-style1">提交</button>
+
+<form id="send" method="post" action="/jsonPost">
+    <!--input class="jsonForm-hidden" type="submit" value="提交" /-->
+    <input type="hidden" name="jsonval" value="" />
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/scripts/Test.js"></script>
+
+{% endblock %}

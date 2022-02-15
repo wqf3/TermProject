@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div id="singleDiv">
+    <button id="BarWithBackground" class="btn-style1" value="1">背景对比柱状图</button>
+    <button id="BasicAreaChart" class="btn-style1" value="2">基础面积图</button>
+    <button id="BasicBar" class="btn-style1" value="3">基础柱状图</button>
+    <button id="BasicLineChart" class="btn-style1" value="4">基础折线图</button>
+    <button id="BasicPieChart" class="btn-style1" value="5">基础圆饼图</button>
+    <button id="DoughnutChart" class="btn-style1" value="6">环形图</button>
+    <button id="DoughnutChartWithRoundedCorner" class="btn-style1" value="7">圆角环形图</button>
+    <button id="NightingaleChart" class="btn-style1" value="8">南丁格尔玫瑰图</button>
+    <button id="SmoothedLineChart" class="btn-style1" value="9">光滑曲线图</button>
+    <button id="RadialPolarBar" class="btn-style1" value="10">极坐标图</button>
+</div>
+<div id="multipleDiv">
+    <button id="GradientStackedAreaChart" class="btn-style1" value="21">渐变堆叠面积图</button>
+    <button id="StackedAreaChart" class="btn-style1" value="22">面积堆叠图</button>
+    <button id="StackedHorizontalBar" class="btn-style1" value="23">堆叠条形图</button>
+    <button id="StackedLineChart" class="btn-style1" value="24">折线堆叠图</button>
+    <button id="MixedLineAndBar" class="btn-style1" value="25">折柱混合图</button>
+    <button id="BasicRadarChart" class="btn-style1" value="26">雷达图</button>
+    <button id="StackedBarChartOnPolar" class="btn-style1" value="27">极坐标下柱状堆叠图</button>
+    <button id="BasicParallel" class="btn-style1" value="28">平行坐标图</button>
+    <button id="StepLine" class="btn-style1" value="29">阶梯折线图</button>
+    <button id="ThemeRiver" class="btn-style1" value="30">主题河流图</button>
+</div>
+<br />
+<br />
+<div id="container-box" class="jumbotron"></div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    var elementText = '<div id="container"></div>';
+    $("#container-box").prepend(elementText);
+    var multipleDivFlag;
+    jsonData = eval("(" + '{{jsonData|safe }}' + ")");
+    dataArray = jsonData['data'];
+    dataTitle = jsonData['title'];
+    dataString = jsonData['year'];
+    console.log(dataString);
+    dataLen = dataArray.length;
+    console.log(dataLen);
+    if (dataLen === 1) {
+        $("#multipleDiv").addClass("btnbox-disabled");
+        multipleDivFlag = false;
+        yearData = dataArray[0];
+    }
+    else {
+        $("#singleDiv").addClass("btnbox-disabled");
+        multipleDivFlag = true;
+        yearData = dataArray;
+        console.log(yearData);
+    }
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+
+<script src="/static/EchartScripts/BarWithBackground.js"></script>
+<script src="/static/EchartScripts/BasicAreaChart.js"></script>
+<script src="/static/EchartScripts/BasicBar.js"></script>
+<script src="/static/EchartScripts/BasicLineChart.js"></script>
+<script src="/static/EchartScripts/BasicPieChart.js"></script>
+<script src="/static/EchartScripts/DoughnutChart.js"></script>
+<script src="/static/EchartScripts/DoughnutChartWithRoundedCorner.js"></script>
+<script src="/static/EchartScripts/MixedLineAndBar.js"></script>
+<script src="/static/EchartScripts/NightingaleChart.js"></script>
+<script src="/static/EchartScripts/SmoothedLineChart.js"></script>
+<script src="/static/EchartScripts/GradientStackedAreaChart2.js"></script>
+<script src="/static/EchartScripts/StackedAreaChart2.js"></script>
+<script src="/static/EchartScripts/StackedHorizontalBar2.js"></script>
+<script src="/static/EchartScripts/StackedLineChart2.js"></script>
+<script src="/static/EchartScripts/BasicRadarChart.js"></script>
+<script src="/static/EchartScripts/RadialPolarBar.js"></script>
+<script src="/static/EchartScripts/StackedBarChartOnPolar.js"></script>
+<script src="/static/EchartScripts/BasicParallel.js"></script>
+<script src="/static/EchartScripts/StepLine.js"></script>
+<script src="/static/EchartScripts/ThemeRiver.js"></script>
+
+<script>
+    singleEcharts = [
+        barWithBackground,
+        basicAreaChart,
+        basicBar,
+        basicLineChart,
+        basicPieChart,
+        doughnutChart,
+        doughnutChartWithRoundedCorner,
+        nightingaleChart,
+        smoothedLineChart,
+        radialPolarBar
+    ];
+    multipleEcharts = [
+        gradientStackedAreaChart2,
+        stackedAreaChart2,
+        stackedHorizontalBar2,
+        stackedLineChart2,
+        mixedLineAndBar,
+        basicRadarChart,
+        stackedBarChartOnPolar,
+        basicParallel,
+        stepLine,
+        themeRiver
+    ];
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    var echartOptions;
+
+    window.onload = function () {
+        if (!multipleDivFlag) {
+            echartOptions = barWithBackground;
+        }
+        else {
+            echartOptions = gradientStackedAreaChart2;
+        }
+
+        if (echartOptions && typeof echartOptions === 'object') {
+            myChart.setOption(echartOptions);
+        }
+    }
+
+    $(".btn-style1").click(function () {
+        if (!$(this).parent().hasClass("btnbox-disabled")) {
+            var btnVal = $(this).val() - 1;
+            console.log(btnVal);
+            $("#container").remove();
+            var elementText = '<div id="container"></div>';
+            $("#container-box").prepend(elementText);
+            if (!multipleDivFlag) {
+                echartOptions = singleEcharts[btnVal];
+                dom = document.getElementById("container");
+                myChart = echarts.init(dom);
+                if (echartOptions && typeof echartOptions === 'object') {
+                    myChart.setOption(echartOptions);
+                }
+            }
+            else {
+                echartOptions = multipleEcharts[btnVal - 20];
+                console.log(echartOptions);
+                dom = document.getElementById("container");
+                myChart = echarts.init(dom);
+                if (echartOptions && typeof echartOptions === 'object') {
+                    myChart.setOption(echartOptions);
+                }
+            }
+        }
+    })
+
+    setTimeout(function () {
+        window.onresize = function () {
+            myChart.resize();
+        }
+    }, 200)
+
+</script>
+
+{% endblock %}
