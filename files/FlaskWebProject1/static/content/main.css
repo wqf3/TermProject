@@ -1,0 +1,361 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --background-color:rgb(2, 3, 68);
+    --border-color:#ffeeee;
+    --text-color:#fff0f0;
+    --btn-color:#b0faff;
+}
+
+html{
+	margin : 0;
+	padding:0;
+	border: 0 ;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    background-size:100% 100%;
+    height:100%;
+    background-image: linear-gradient(#283848,#4047aa);
+
+}
+
+.container{
+    position: relative;
+    width:25%;
+    min-width: 1000px;
+    height:40%;
+    min-height:600px;
+    border-radius: 10px;
+    background-color: var(--background-color);
+    z-index: 1;
+    box-shadow: 2px 2px 10px #111,-2px 2px 10px #111;
+
+}
+
+.inner{
+    position: absolute;
+    width:25%;
+    min-width: 400px;
+    height:40%;
+    min-height:600px;
+    left:60%;
+}
+
+.H{
+    font-size:3em;
+    font-family:"Old English Text MT";
+    color:var(--text-color);
+    margin-top:20px;
+    
+}
+
+.inputbox{
+    position: relative;
+    left:10%;
+    margin-top: 45px;
+    width:80%;
+    height:50px;
+}
+
+input,button{
+    border:0;
+    outline:0;
+    background-color: transparent;
+}
+
+input[type = text],input[type = password]{
+    border-bottom: 2px solid var(--border-color);
+    width:60%;
+    height:100%;
+    color:white;
+    font-size:18px;
+    padding-top:15px;
+    transition: width,0.3s;
+    z-index: 3;
+}
+
+.label{
+    color:var(--text-color);
+    position: relative;
+    top:-60px;
+    font-size:18px;
+    transition: top,0.3s;
+    z-index: 2;
+}
+
+.btnlabel{
+    color:var(--text-color);
+    position: relative;
+    top:-50px;
+    left: 200px;
+    font-size:18px;
+    transition: top,0.3s;
+    z-index: 2;
+}
+
+input:focus,.inputbox:hover>input{
+    width:80%;
+}
+
+input:focus+.label,.inputbox:hover>.label{
+    top:-70px;
+    text-shadow:0 0 5px var(--text-color),
+                0 0 10px  var(--text-color),
+                0 0 15px  var(--text-color);
+}
+
+.clear{
+    --text-color:#33ff33;
+}
+
+.unclear{
+    --text-color:#ff3333;
+}
+
+.morechar::after{
+    content: "    8 chars at least.";
+    white-space: pre;
+}
+
+.diff::after{
+    content: "    Not same as Password.";
+    white-space: pre;
+}
+
+.longername::after{
+    content: "    4 chars at least.";
+    white-space: pre;
+}
+
+.indicatorbox{
+    display:flex;
+    justify-content:left;
+    align-items: left;
+    position: relative;
+    left:10%;
+    margin-top: 30px;
+    width:80%;
+    height:20px;
+}
+
+.indicator{
+    position: relative;
+    width:60px;
+    height:20px;
+    border-radius: 10%;
+    z-index: 2;
+    margin-right:15px;
+    transition: all 0.3s;
+}
+
+.Off{
+    opacity: 0.3;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.On{
+    transition: all 0.3s;
+    background: var(--color1);
+    opacity:1;
+    box-shadow: 0 0 5px   0 var(--color1),
+                0 0 10px  0 var(--color1),
+                0 0 20px  0 var(--color1),
+                0 0 30px  0 var(--color1),
+                0 0 50px  0 var(--color1),
+                0 0 75px  0 var(--color1),
+                0 0 100px 0 var(--color1);
+}
+
+#a{--color1:#ffaaaa;}
+#b{--color1:#efff5d;}
+#c{--color1:#a0ff74;}
+#d{--color1:#84ceff;}
+
+.btn{
+    position:relative;
+    overflow: hidden;
+    left:10%;
+    padding: 10px 20px;
+    background-color: transparent;
+    margin-top: 60px;
+    color:var(--btn-color);
+    outline:none;
+    border:none;
+    transition:all 0.3s;
+    border-radius: 10%;
+    border:2px solid var(--btn-color);
+    visibility:hidden;
+}
+
+.show{
+    opacity: 1;
+}
+
+.hide{
+    opacity: 0;
+}
+
+.btn:hover{
+    background:var(--btn-color);
+    border-radius: 5px;
+    color: var(--background-color);
+    box-shadow: 0 0 5px 0 var(--btn-color),
+                0 0 25px 0 var(--btn-color),
+                0 0 50px 0 var(--btn-color),
+                0 0 100px 0 var(--btn-color),
+                0 0 150px 0 var(--btn-color);
+}
+
+/*
+input[type = checkbox],.inputbox:hover>input[type = checkbox]{
+    position:absolute;
+    top:25px;
+    left:260px;
+    width: 20px; 
+    height: 20px;
+    border:2px solid var(--btn-color); 
+    background-color: aqua;
+    color:aquamarine;   
+}*/
+
+input[type = checkbox]{
+    display: none;
+}
+
+.check{
+    position:absolute;
+    top:25px;
+    left:280px;
+    width: 20px; 
+    height: 20px;
+    border:2px solid var(--btn-color); 
+    border-radius: 10%;
+    transition: all 0.3s;
+}
+
+input[type = checkbox]:checked + .check{
+    background-color: var(--btn-color);
+    box-shadow: 0 0 5px 0 var(--btn-color),
+                0 0 25px 0 var(--btn-color),
+                0 0 50px 0 var(--btn-color);
+}
+
+.showbox{
+    position: relative;
+    width:55%;
+    min-width: 300px;
+    height: 40%;
+    min-height:600px;
+    left:0%;
+    z-index: 1;
+}
+
+.wordbox{
+    position: absolute;
+    width:25%;
+    min-width: 600px;
+    height:40%;
+    min-height:600px;
+    left:0%;
+    padding:0;
+    margin:0;
+    text-align: center;
+}
+
+.title{
+    position: relative;
+    font-size:6em;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+    animation: title 1.5s;
+    -webkit-animation: title 1.5s;
+    color:rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes title{
+    0%{
+        color:rgb(4, 3, 90);
+    }
+    100%{
+        color:rgb(93, 255, 242);
+        text-shadow: 0 0 5px rgb(93, 255, 242),
+        0 0 10px rgb(93, 255, 242);
+    }
+}
+
+@keyframes hrs{
+    0%{
+        background-color:rgb(4, 3, 90);
+    }
+    100%{
+        background-color:rgb(93, 255, 242);
+        box-shadow: 0 0 5px rgb(93, 255, 242),
+        0 0 10px rgb(93, 255, 242);
+    }
+}
+
+.subtitle{
+    font-size: 3em;
+    color:white;
+    padding-top: 30px;
+    animation: title 1.5s;
+    -webkit-animation: title 1.5s;
+    color:rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+}
+
+#s1{
+    animation-delay: 2.0s;
+}
+
+#s2{
+    padding-top:10px;
+    animation-delay: 2.75s;
+}
+
+#s3{
+    position: relative;
+    top:-130px;
+    animation-delay: 2.0s;
+}
+
+#hr1{
+    border:rgb(93, 255, 242);
+    height:5px;
+    position: absolute;
+    left:40%;
+    width:20%;
+    background-color:rgb(4, 3, 90);
+    animation: hrs 1.5s;
+    -webkit-animation: hrs 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1.25s;
+}
+
+#small{
+    position: absolute;
+    top: 45%;
+    left:50%;
+    width:100%;
+    transform: translate(-50%,-50%);
+}

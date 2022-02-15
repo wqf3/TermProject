@@ -1,0 +1,250 @@
+:root {
+    --background-color: #283848;
+    --text-begin-color: rgb(4, 3, 90);
+    --text-color: rgb(93, 255, 242);
+}
+
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: linear-gradient(#283848,#4047aa);
+}
+
+#loginBox {
+    background-color: var(--background-color);
+    box-shadow: 2px 2px 5px #111,-2px 2px 5px #111;
+}
+
+.title {
+    position: relative;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+    animation: title 1.5s;
+    -webkit-animation: title 1.5s;
+    color: rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+    animation-delay: 0.6s;
+}
+
+.subtitle {
+    animation: title 1.5s;
+    -webkit-animation: title 1.5s;
+    color: rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+}
+
+#LoginTitle, #LoginSub {
+    color: rgb(4, 3, 90);
+}
+
+#LoginSub {
+    animation-delay: 1.2s;
+}
+
+#LoginIntro {
+    animation: text 1.5s;
+    -webkit-animation: text 1.5s;
+    color: rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+    animation-delay: 2.4s;
+}
+
+
+@keyframes title {
+    0% {
+        color: rgb(4, 3, 90);
+    }
+
+    100% {
+        color: rgb(93, 255, 242);
+        text-shadow: 0 0 5px rgb(93, 255, 242), 0 0 10px rgb(93, 255, 242);
+    }
+}
+
+@keyframes text {
+    0% {
+        color: rgb(4, 3, 90);
+    }
+
+    100% {
+        color: rgb(93, 255, 242);
+    }
+}
+
+.index-hr {
+    animation: hr 1.5s;
+    -webkit-animation: hr 1.5s;
+    border-top-color: rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+    animation-delay: 1.8s;
+}
+
+.hr {
+    border-top-color: rgb(93, 255, 242);
+}
+
+@keyframes hr {
+    0% {
+        border-top-color: rgb(4, 3, 90);
+    }
+
+    100% {
+        border-top-color: rgb(93, 255, 242);
+    }
+}
+
+.index-subtitle {
+    animation: text 1.5s;
+    -webkit-animation: text 1.5s;
+    color: rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+    animation-delay: 1.8s;
+}
+
+.small-sub{
+    font-size:15px;
+}
+
+.big-sub {
+    font-size: 40px;
+}
+
+#index-sub-icon {
+    font-size: 80px;
+    position: relative;
+    top: 85px;
+    left: 200px;
+}
+
+.index-subtitle-box{
+    position:relative;
+    top:-80px;
+}
+
+.index-text {
+    animation: text 1.5s;
+    -webkit-animation: text 1.5s;
+    color: rgb(4, 3, 90);
+    animation-fill-mode: forwards;
+    animation-delay: 1.8s;
+}
+
+.index-btn-style1 {
+    animation: btn 1.5s;
+    -webkit-animation: btn 1.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes btn {
+    0% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.btn-upper {
+    animation-delay: 1.5s;
+    opacity: 0.1;
+}
+
+.btn-lower {
+    animation-delay: 1.8s;
+    opacity: 0.1;
+}
+
+.login-H2 {
+    font-family: 'Old English Text MT';
+    color: var(--text-begin-color);
+    animation: title 1.5s;
+    -webkit-animation: title 1.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.inputbox {
+    position: relative;
+}
+
+input[type = text], input[type = password] {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: 2px solid #edfffe;
+    width: 30%;
+    height: 100%;
+    color: white;
+    font-size: 18px;
+    padding-top: 15px;
+    transition: width,0.3s;
+    z-index: 3;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-text-fill-color: #ededed !important;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    background-color: transparent;
+    background-image: none;
+    transition: background-color 50000s ease-in-out 0s;
+}
+
+.login-label {
+    position: relative;
+    top: -70px;
+    color: white;
+    transition: top,0.3s;
+}
+
+.input:focus, .inputbox:hover > input {
+    width: 45%;
+}
+
+    input:focus + .login-label, .inputbox:hover > .login-label {
+        top: -80px;
+        color:var(--text-color);
+        text-shadow: 0 0 5px var(--text-color), 0 0 10px var(--text-color), 0 0 15px var(--text-color);
+    }
+
+input[type = checkbox] {
+    display: none;
+}
+
+.check {
+    position: absolute;
+    top: 64px;
+    left: -25px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--text-color);
+    border-radius: 10%;
+    transition: all 0.3s;
+}
+
+input[type = checkbox]:checked + .check {
+    background-color: var(--text-color);
+    box-shadow: 0 0 5px 0 var(--text-color), 0 0 25px 0 var(--text-color), 0 0 50px 0 var(--text-color);
+}
+
+.btn-style1 {
+    position: relative;
+    overflow: hidden;
+    left: 0%;
+    padding: 10px 20px;
+    background-color: inherit;
+    color: rgb(93, 255, 242);
+    outline: none;
+    border: none;
+    transition: all 0.3s;
+    border-radius: 10%;
+    border: 2px solid rgb(93, 255, 242);
+}
+
+    .btn-style1:hover {
+        background: rgb(93, 255, 242);
+        border-radius: 5px;
+        color: #283848;
+        box-shadow: 0 0 5px 0 rgb(93, 255, 242), 0 0 25px 0 rgb(93, 255, 242),0 0 40px 0 rgb(93, 255, 242);
+    }
